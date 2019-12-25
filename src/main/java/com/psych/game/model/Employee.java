@@ -6,17 +6,9 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import java.io.Serializable;
 
-@Entity
-@Table(name = "employees")
-public class Employee extends Auditable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
-    @Setter
-    private Long id;
+@MappedSuperclass
+public abstract class Employee extends Auditable {
 
     @Setter
     @Getter
@@ -28,4 +20,14 @@ public class Employee extends Auditable {
     @NotBlank
     @Email
     private String email;
+
+    @Getter
+    @Setter
+    @NotBlank
+    private String address;
+
+    @Getter
+    @Setter
+    @NotBlank
+    private String phoneNumber;
 }
